@@ -2,6 +2,9 @@
 
 'use strict';
 
+const cartItems = document.getElementById('catalog'); 
+cartItems.addEventListener("submit", handleSubmit);
+
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
 
@@ -16,7 +19,7 @@ function populateForm() {
     optionElem.textContent = Product.allProducts[i].name;
     selectElement.appendChild(optionElem);
 
-    console.log(optionElem)
+    // console.log(optionElem)
 
   }
 
@@ -38,11 +41,43 @@ function handleSubmit(event) {
 
 }
 
+// ************************
+// function populateForm() {
+
+//   const selectElement = document.getElementById('items');
+//   for (let i in Product.allProducts) {
+//     let optionElem = document.createElement('option');
+//     optionElem.textContent = Product.allProducts[i].name;
+//     selectElement.appendChild(optionElem);
+//   }
+// }
+// *************************
+// ___________________________
+
+// 1. Add item
+// 2. Add Quantity
+// 3. Push add to cart button - have event listener hear the pushed add to cart button.
+// 4. have the event handler push the items and quanitity into an array to hold the cart data
+// 5. clear the data from the catalog page
+// 6. Display the item and quanitity onto the cart page
+
+// ___________________________
+
+
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
+
+  let items = document.getElementById('items').value;
+  let quantity = document.getElementById('quantity').value;
+  
+  cart.addItem(items, quantity);
+  new Cart.push(addSelectedItemToCart());
+  
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
+
+
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
